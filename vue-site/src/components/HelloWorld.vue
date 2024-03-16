@@ -4,7 +4,7 @@
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
       <input v-model="questionAnswer">
-      <button v-if="questionAnswer == 3" @click="handleClick">Volgende</button>
+      <button  @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
@@ -43,7 +43,11 @@ export default {
   },
   methods: {
     handleClick() {
-      this.sampler.triggerAttack("A1");
+      if (this.currentQuestion === 1 && this.questionAnswer === "3"){
+        this.currentQuestion++;
+      } else {
+        this.sampler.triggerAttack("A1");
+      }
     }
   }
 };
