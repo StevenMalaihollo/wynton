@@ -4,7 +4,7 @@ This project assumes you have Node JS on your machine, and can be programmed usi
 
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Vue](https://vuejs.org/).
 
 ## Available Scripts
 
