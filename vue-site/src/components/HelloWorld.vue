@@ -56,6 +56,7 @@ export default {
     handleClick() {
       if (this.currentQuestion === 1 && this.questionAnswer === "3"){
         this.currentQuestion++;
+        this.questionAnswer = '';
         this.player.autostart = true;
         this.player.start(Applause);
       } else {
