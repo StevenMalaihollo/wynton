@@ -11,15 +11,16 @@
       <button @click="currentQuestion++">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
-      <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
+      <p>Gefeliciteerd, je hebt de Quiz gehaald!</p>
       <img alt="Vue logo" src="../assets/trophy.png" />
     </div>
   </div>
 </template>
 
 <script>
-import { Sampler } from "tone"
+import { Sampler, Player } from "tone"
 import A1 from "../assets/A1.mp3"
+import Applause from "../assets/applause.mp3"
 export default {
   name: "HelloWorld",
   props: {
@@ -32,19 +33,30 @@ export default {
     };
   },
   created() {
+    this.player = new Player(
+    { Applause }, 
+    {
+
+      onload: () => {
+        this.isLoaded = true;
+      }
+    })
     this.sampler = new Sampler(
       { A1 },
       {
+
         onload: () => {
           this.isLoaded = true;
         }
       }
-    ).toMaster();
+    );
   },
   methods: {
     handleClick() {
       if (this.currentQuestion === 1 && this.questionAnswer === "3"){
         this.currentQuestion++;
+        this.player.autostart = true;
+        this.player.start(Applause);
       } else {
         this.sampler.triggerAttack("A1");
       }
