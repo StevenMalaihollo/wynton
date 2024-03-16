@@ -8,10 +8,12 @@
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
+      <input v-model="questionAnswer">
       <button @click="currentQuestion++">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
       <p>Gefeliciteerd, je hebt de Quiz gehaald!</p>
+      <input v-model="questionAnswer">
       <img alt="Vue logo" src="../assets/trophy.png" />
     </div>
   </div>
