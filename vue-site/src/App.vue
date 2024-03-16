@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld msg="Welkom bij Wynton.co.jp." />
+  <HelloWorld msg="Welkom bij wynton-japan.nl." />
 </template>
 
 <script>
