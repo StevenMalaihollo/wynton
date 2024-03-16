@@ -61,7 +61,7 @@ export default {
       } else {
         this.sampler.triggerAttack("A1");
       }
-      if (this.currentQuestion === 2 && this.questionAnwer == "Leander"){
+      if (this.currentQuestion === 2 && this.questionAnwer === "Leander"){
         this.currentQuestion++;
         this.player.autostart = true;
         this.player.start(Applause);
