@@ -3,20 +3,23 @@
     <h1>{{ msg }}</h1>
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
-      <button @click="currentQuestion++">Volgende</button>
+      <input v-model="questionAnswer">
+      <button v-if="questionAnswer == 3" @click="currentQuestion++">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
       <button @click="currentQuestion++">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
-      <p>Gefeliciteerd je hebt de Quiz gehaal!</p>
+      <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
       <img alt="Vue logo" src="../assets/trophy.png" />
     </div>
   </div>
 </template>
 
 <script>
+import * as Tone from "./Tone.js"
+
 export default {
   name: "HelloWorld",
   props: {
@@ -25,6 +28,7 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
+      questionAnswer: '',
     };
   },
 };
