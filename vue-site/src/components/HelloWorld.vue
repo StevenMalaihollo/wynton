@@ -9,11 +9,10 @@
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
       <input v-model="questionAnswer">
-      <button @click="currentQuestion++">Volgende</button>
+      <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
       <p>Gefeliciteerd, je hebt de Quiz gehaald!</p>
-      <input v-model="questionAnswer">
       <img alt="Vue logo" src="../assets/trophy.png" />
     </div>
   </div>
@@ -56,6 +55,13 @@ export default {
   methods: {
     handleClick() {
       if (this.currentQuestion === 1 && this.questionAnswer === "3"){
+        this.currentQuestion++;
+        this.player.autostart = true;
+        this.player.start(Applause);
+      } else {
+        this.sampler.triggerAttack("A1");
+      }
+      if (this.currentQuestion === 2 && this.questionAnwer == "Leander"){
         this.currentQuestion++;
         this.player.autostart = true;
         this.player.start(Applause);
