@@ -4,7 +4,7 @@
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
       <input v-model="questionAnswer">
-      <button v-if="questionAnswer == 3" @click="currentQuestion++">Volgende</button>
+      <button v-if="questionAnswer == 3" @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
@@ -18,12 +18,8 @@
 </template>
 
 <script>
-import * as Tone from "./Tone.js"
-//create a synth and connect it to the main output (your speakers)
-const synth = new Tone.Synth().toDestination();
-
-//play a middle 'C' for the duration of an 8th note
-synth.triggerAttackRelease("C4", "8n");
+import { Sampler } from "tone"
+import A1 from "../assets/A1.mp3"
 export default {
   name: "HelloWorld",
   props: {
@@ -35,6 +31,21 @@ export default {
       questionAnswer: '',
     };
   },
+  created() {
+    this.sampler = new Sampler(
+      { A1 },
+      {
+        onload: () => {
+          this.isLoaded = true;
+        }
+      }
+    ).toMaster();
+  },
+  methods: {
+    handleClick() {
+      this.sampler.triggerAttack("A1");
+    }
+  }
 };
 </script>
 
