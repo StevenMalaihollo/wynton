@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     handleClick() {
-      if (this.currentQuestion === 1 && this.questionAnswer === "3"){
+      if (this.currentQuestion === 1 && this.questionAnswer == "3"){
         this.currentQuestion++;
         this.questionAnswer = '';
         this.player.autostart = true;
@@ -62,7 +62,7 @@ export default {
       } else {
         this.sampler.triggerAttack("A1");
       }
-      if (this.currentQuestion === 2 && this.questionAnwer === "Leander"){
+      if (this.currentQuestion === 2 && this.questionAnwer == "Leander"){
         this.currentQuestion++;
         this.player.autostart = true;
         this.player.start(Applause);
