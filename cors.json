@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://www.wynton-japan.nl"],
+    "responseHeader": ["Content-Type"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

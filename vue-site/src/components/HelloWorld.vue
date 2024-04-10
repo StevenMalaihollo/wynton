@@ -3,8 +3,8 @@
     <h1>{{ msg }}</h1>
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
-      <input v-model="questionAnswer">
-      <button  @click="handleClick">Volgende</button>
+      <input v-model="questionAnswer" />
+      <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
@@ -12,14 +12,14 @@
     </div>
     <div v-else-if="currentQuestion === 3">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
-      <img alt="Vue logo" src="../assets/trophy.png" />
+      <img alt="Vue logo" src="@/assets/trophy.png" />
     </div>
   </div>
 </template>
 
 <script>
-import { Sampler } from "tone"
-import A1 from "../assets/A1.mp3"
+import { Sampler } from "tone";
+import A1 from "@/assets/A1.mp3";
 export default {
   name: "HelloWorld",
   props: {
@@ -28,7 +28,7 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
-      questionAnswer: '',
+      questionAnswer: "",
     };
   },
   created() {
@@ -37,19 +37,19 @@ export default {
       {
         onload: () => {
           this.isLoaded = true;
-        }
+        },
       }
     ).toMaster();
   },
   methods: {
     handleClick() {
-      if (this.currentQuestion === 1 && this.questionAnswer === "3"){
+      if (this.currentQuestion === 1 && this.questionAnswer === "3") {
         this.currentQuestion++;
       } else {
         this.sampler.triggerAttack("A1");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
