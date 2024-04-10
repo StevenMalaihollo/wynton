@@ -8,7 +8,8 @@
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
-      <button @click="currentQuestion++">Volgende</button>
+      <input v-model="questionAnswer" />
+      <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
@@ -18,8 +19,9 @@
 </template>
 
 <script>
-import { Sampler } from "tone";
+import { Sampler, Player } from "tone";
 import A1 from "@/assets/A1.mp3";
+import Applause from "@/assets/applause.mp3";
 export default {
   name: "HelloWorld",
   props: {
@@ -32,6 +34,14 @@ export default {
     };
   },
   created() {
+    this.player = new Player(
+      { Applause },
+      {
+        onload: () => {
+          this.isLoaded = true;
+        },
+      }
+    );
     this.sampler = new Sampler(
       { A1 },
       {
@@ -39,12 +49,22 @@ export default {
           this.isLoaded = true;
         },
       }
-    ).toMaster();
+    );
   },
   methods: {
     handleClick() {
       if (this.currentQuestion === 1 && this.questionAnswer === "3") {
         this.currentQuestion++;
+        this.questionAnswer == "";
+        this.player.autostart = true;
+        this.player.start(Applause);
+      } else {
+        this.sampler.triggerAttack("A1");
+      }
+      if (this.currentQuestion === 2 && this.questionAnwer == "Leander") {
+        this.currentQuestion++;
+        this.player.autostart = true;
+        this.player.start(Applause);
       } else {
         this.sampler.triggerAttack("A1");
       }
