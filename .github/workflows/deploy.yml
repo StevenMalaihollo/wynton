@@ -1,0 +1,47 @@
+name: Site client
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - svc-client/**
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy
+
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "14.x"
+      - run: npm ci
+        working-directory: svc-client
+        shell: bash
+      - run: npm run typeCheck
+        working-directory: svc-client
+        shell: bash
+      - run: npm run lint:all
+        working-directory: svc-client
+        shell: bash
+      - run: npm run build
+        working-directory: svc-client
+        shell: bash
+
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          workload_identity_provider: ${{vars.GCP_WIDPP_ID_PROD}}
+          service_account: ${{vars.GCP_SA_EMAIL}}
+      - uses: "google-github-actions/setup-gcloud@v1"
+      - run: gsutil -m rsync -r -c ./public gs://${{vars.CLIENT_GCP_BUCKET_NAME}}
+        working-directory: svc-client
+        shell: bash
+      - run: gsutil setmeta -h "Cache-Control:no-store, max-age=0" gs://${{vars.CLIENT_GCP_BUCKET_NAME}}/index.html
+        shell: bash
