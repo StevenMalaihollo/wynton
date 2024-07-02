@@ -49,6 +49,7 @@ export default {
           this.playApplause();
           this.questionAnswer == "";
           this.currentQuestion++; 
+          return;
         }
         else {
           this.playA1();
@@ -59,6 +60,7 @@ export default {
           this.playApplause();
           this.questionAnswer == "";
           this.currentQuestion++; 
+          return;
         }
         else {
           this.playA1();
