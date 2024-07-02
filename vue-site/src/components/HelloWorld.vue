@@ -4,11 +4,13 @@
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
       <input v-model="questionAnswer" />
+      <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
       <input v-model="questionAnswer" />
+      <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
