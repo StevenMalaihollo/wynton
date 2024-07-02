@@ -3,13 +3,13 @@
     <h1>{{ msg }}</h1>
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
-      <input v-model="questionAnswer" />
+      <input v-model="questionAnswer1" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
-      <input v-model="questionAnswer" />
+      <input v-model="questionAnswer2" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
@@ -32,7 +32,8 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
-      questionAnswer: "",
+      questionAnswer1: "",
+      questionAnswer2: "",
     };
   },
   setup() {
@@ -47,9 +48,8 @@ export default {
   methods: {
     handleClick() {
       if (this.currentQuestion === 1) {
-        if (this.questionAnswer === "3") {
+        if (this.questionAnswer1 === "3") {
           this.playApplause();
-          this.questionAnswer == "";
           this.currentQuestion++; 
           return;
         }
@@ -58,9 +58,8 @@ export default {
         }
       }
       if (this.currentQuestion === 2) {
-        if (this.questionAnswer === "Leander") {
+        if (this.questionAnswer2 === "Leander") {
           this.playApplause();
-          this.questionAnswer == "";
           this.currentQuestion++; 
           return;
         }
