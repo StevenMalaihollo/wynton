@@ -15,7 +15,7 @@
     </div>
     <div v-else-if="currentQuestion === 3">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
-      <img alt="Vue logo" src="@/assets/trophy.png" />
+      <img alt="Big trophy" src="@/assets/trophy.png" />
     </div>
   </div>
 </template>
