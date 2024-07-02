@@ -44,19 +44,27 @@ export default {
   },
   methods: {
     handleClick() {
-      if (this.currentQuestion === 1 && this.questionAnswer === "3") {
-        this.currentQuestion++;
-        this.questionAnswer == "";
-        this.playApplause();
-      } else {
-        this.playA1();
+      if (this.currentQuestion === 1) {
+        if (this.questionAnswer === "3") {
+          this.playApplause();
+          this.questionAnswer == "";
+          this.currentQuestion++; 
+        }
+        else {
+          this.playA1();
+        }
       }
-      if (this.currentQuestion === 2 && this.questionAnwer == "Leander") {
-        this.currentQuestion++;
-        this.playApplause();
-      } else {
-        this.playA1();
+      if (this.currentQuestion === 2) {
+        if (this.questionAnswer === "Leander") {
+          this.playApplause();
+          this.questionAnswer == "";
+          this.currentQuestion++; 
+        }
+        else {
+          this.playA1();
+        }
       }
+      
     },
   },
 };
