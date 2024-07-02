@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { Sampler, Player } from "tone";
+import { useSound } from "@vueuse/sound";
 import A1 from "@/assets/A1.mp3";
 import Applause from "@/assets/applause.mp3";
 export default {
@@ -33,40 +33,29 @@ export default {
       questionAnswer: "",
     };
   },
-  created() {
-    this.player = new Player(
-      { Applause },
-      {
-        onload: () => {
-          this.isLoaded = true;
-        },
-      }
-    );
-    this.sampler = new Sampler(
-      { A1 },
-      {
-        onload: () => {
-          this.isLoaded = true;
-        },
-      }
-    );
+  setup() {
+    const { play: playA1 } = useSound(A1);
+    const { play: playApplause } = useSound(Applause);
+
+    return {
+      playA1,
+      playApplause,
+    };
   },
   methods: {
     handleClick() {
       if (this.currentQuestion === 1 && this.questionAnswer === "3") {
         this.currentQuestion++;
         this.questionAnswer == "";
-        this.player.autostart = true;
-        this.player.start(Applause);
+        this.playApplause();
       } else {
-        this.sampler.triggerAttack("A1");
+        this.playA1();
       }
       if (this.currentQuestion === 2 && this.questionAnwer == "Leander") {
         this.currentQuestion++;
-        this.player.autostart = true;
-        this.player.start(Applause);
+        this.playApplause();
       } else {
-        this.sampler.triggerAttack("A1");
+        this.playA1();
       }
     },
   },
