@@ -3,19 +3,32 @@
     <h1>{{ msg }}</h1>
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
+      <br>
       <input v-model="questionAnswer1" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
+      <br>
       <input v-model="questionAnswer2" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
+      <p>Vraag 3: </p>
+      <br>
+      <input v-model="questionAnswer1" />
+      <br>
+      <button @click="handleClick">Volgende</button>
+    </div>
+    <div v-else-if="currentQuestion === 100">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
       <img alt="Big trophy" src="@/assets/trophy.png" />
+    </div>
+    <div>
+      <button @click="handleClick">Save</button>
+      <button @click="loadButton = 1 && handleClick">Load</button>
     </div>
   </div>
 </template>
@@ -24,6 +37,7 @@
 import { useSound } from "@vueuse/sound";
 import A1 from "@/assets/A1.mp3";
 import Applause from "@/assets/applause.mp3";
+import VueCookies from "vue-cookies"
 export default {
   name: "HelloWorld",
   props: {
@@ -32,8 +46,12 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
+      saveButton: 1,
+      loadButton: 0,
       questionAnswer1: "",
       questionAnswer2: "",
+      questionAnswer3: "",
+      
     };
   },
   setup() {
@@ -50,6 +68,7 @@ export default {
       if (this.currentQuestion === 1) {
         if (this.questionAnswer1 === "3") {
           this.playApplause();
+          this.saveButton++;
           this.currentQuestion++; 
           return;
         }
@@ -58,8 +77,9 @@ export default {
         }
       }
       if (this.currentQuestion === 2) {
-        if (this.questionAnswer2 === "Leander") {
+        if (this.questionAnswer2 === "Hiragana, Katakana, Kanji") {
           this.playApplause();
+          this.saveButton++;
           this.currentQuestion++; 
           return;
         }
@@ -67,8 +87,18 @@ export default {
           this.playA1();
         }
       }
-      
-    },
+      if (this.saveButton === 1) {
+        VueCookies.set("currentQuestion", "1")
+      }
+      if (this.saveButton === 2) {
+        VueCookies.set("currentQuestion", "2")
+      }
+      if (this.saveButton === 3) {
+        VueCookies.set("currentQuestion", "3")
+      }
+      if (this.loadButon === 1)
+      VueCookies.get("currentQuestion")
+    }
   },
 };
 </script>
