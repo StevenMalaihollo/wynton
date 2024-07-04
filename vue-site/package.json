@@ -1,7 +1,7 @@
 {
-  "name": "driven-site",
-  "version": "0.1.0",
-  "private": true,
+  "name": "Wynton-Japan.nl",
+  "version": "2.2.0",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
