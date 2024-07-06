@@ -10,13 +10,15 @@
     </div>
     <div v-else-if="currentQuestion === 2">
       <p>Vraag 2: Hoe heten de 3 Japanse alfabetten?</p>
+      <a href = "https://nl.wikipedia.org/wiki/Japans_schrift">Hint</a>
       <br>
       <input v-model="questionAnswer2" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 3">
-      <p>Vraag 3: </p>
+      <p>Vraag 3: Hoe heet dit karakter?</p>
+      <img alt="A Hiragana" src="@/assets/A-Hiragana.png" />
       <br>
       <input v-model="questionAnswer3" />
       <br>
@@ -29,13 +31,13 @@
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
-    <div v-else-if="currentQuestion === 100">
+    <div v-else-if="currentQuestion === 5">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
       <img alt="Big trophy" src="@/assets/trophy.png" />
     </div>
-    <div>
+    <div v-if="loadSaveButton === true">
       <button @click="handleClick">Save</button>
-      <button @click="loadButton = True && handleClick">Load</button>
+      <button @click="loadButton = true && handleClick">Load</button>
     </div>
   </div>
 </template>
@@ -54,6 +56,7 @@ export default {
     return {
       currentQuestion: 1,
       loadButton: false,
+      loadSaveButton: true,
       questionAnswer1: "",
       questionAnswer2: "",
       questionAnswer3: "",
@@ -106,12 +109,19 @@ export default {
           return;
         }
         else {
-          this.playA1();
-          return;
+          if (this.questionAnswer2 === "Kanji, Hiragana, Katakana") {
+            this.playApplause();
+            this.currentQuestion++; 
+            return;
+          }
+          else {
+            this.playA1();
+            return;
+          }
         }
       }
       if (this.currentQuestion === 3) {
-        if (this.questionAnswer3 === "") {
+        if (this.questionAnswer3 === "a") {
           this.playApplause();
           this.currentQuestion++; 
           return;
@@ -120,6 +130,21 @@ export default {
           this.playA1();
           return;
         }
+      }
+      if (this.currentQuestion === 4) {
+        if (this.questionAnswer4 === "") {
+          this.playApplause();
+          this.saveButton++;
+          this.currentQuestion++; 
+          return;
+        }
+        else {
+          this.playA1();
+          return;
+        }
+      }
+      if (this.currentQuestion === 5) {
+        this.loadSaveButton === false
       }
       if (this.currentQuestion === 1) {
         VueCookies.set("currentQuestionSave", "1")
