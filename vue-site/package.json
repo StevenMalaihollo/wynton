@@ -1,7 +1,12 @@
 {
-  "name": "Wynton-Japan.nl",
+  "name": "wynton-japan.nl",
   "version": "2.2.0",
   "private": false,
+  "homepage": "https://github.com/stevenmalaihollo/wynton",
+  "bugs": {
+    "url": "https://github.com/stevenmalaihollo/wynton/issues",
+    "email": "wyntontjes123@outlook.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

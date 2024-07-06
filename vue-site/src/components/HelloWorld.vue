@@ -9,7 +9,7 @@
       <button @click="handleClick">Volgende</button>
     </div>
     <div v-else-if="currentQuestion === 2">
-      <p>Vraag 2: Wat is de 2de naam van Wynton?</p>
+      <p>Vraag 2: Hoe heten de 3 Japanse alfabetten?</p>
       <br>
       <input v-model="questionAnswer2" />
       <br>
@@ -18,7 +18,14 @@
     <div v-else-if="currentQuestion === 3">
       <p>Vraag 3: </p>
       <br>
-      <input v-model="questionAnswer1" />
+      <input v-model="questionAnswer3" />
+      <br>
+      <button @click="handleClick">Volgende</button>
+    </div>
+    <div v-else-if="currentQuestion === 4">
+      <p>Vraag 4: </p>
+      <br>
+      <input v-model="questionAnswer4" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
@@ -28,7 +35,7 @@
     </div>
     <div>
       <button @click="handleClick">Save</button>
-      <button @click="loadButton = 1 && handleClick">Load</button>
+      <button @click="loadButton = True && handleClick">Load</button>
     </div>
   </div>
 </template>
@@ -46,11 +53,27 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
-      saveButton: 1,
-      loadButton: 0,
+      loadButton: false,
       questionAnswer1: "",
       questionAnswer2: "",
       questionAnswer3: "",
+      questionAnswer4: "",
+      questionAnswer5: "",
+      questionAnswer6: "",
+      questionAnswer7: "",
+      questionAnswer8: "",
+      questionAnswer9: "",
+      questionAnswer10: "",
+      questionAnswer11: "",
+      questionAnswer12: "",
+      questionAnswer13: "",
+      questionAnswer14: "",
+      questionAnswer15: "",
+      questionAnswer16: "",
+      questionAnswer17: "",
+      questionAnswer18: "",
+      questionAnswer19: "",
+      questionAnswer20: "",
       
     };
   },
@@ -68,36 +91,112 @@ export default {
       if (this.currentQuestion === 1) {
         if (this.questionAnswer1 === "3") {
           this.playApplause();
-          this.saveButton++;
           this.currentQuestion++; 
           return;
         }
         else {
           this.playA1();
+          return
         }
       }
       if (this.currentQuestion === 2) {
         if (this.questionAnswer2 === "Hiragana, Katakana, Kanji") {
           this.playApplause();
-          this.saveButton++;
           this.currentQuestion++; 
           return;
         }
         else {
           this.playA1();
+          return;
         }
       }
-      if (this.saveButton === 1) {
-        VueCookies.set("currentQuestion", "1")
+      if (this.currentQuestion === 3) {
+        if (this.questionAnswer3 === "") {
+          this.playApplause();
+          this.currentQuestion++; 
+          return;
+        }
+        else {
+          this.playA1();
+          return;
+        }
       }
-      if (this.saveButton === 2) {
-        VueCookies.set("currentQuestion", "2")
+      if (this.currentQuestion === 1) {
+        VueCookies.set("currentQuestionSave", "1")
       }
-      if (this.saveButton === 3) {
-        VueCookies.set("currentQuestion", "3")
+      if (this.currentQuestion === 2) {
+        VueCookies.set("currentQuestionSave", "2")
       }
-      if (this.loadButon === 1)
-      VueCookies.get("currentQuestion")
+      if (this.currentQuestion === 3) {
+        VueCookies.set("currentQuestionSave", "3")
+      }
+      if (this.currentQuestion === 4) {
+        VueCookies.set("currentQuestionSave", "4")
+      }
+      if (this.currentQuestion === 5) {
+        VueCookies.set("currentQuestionSave", "5")
+      }
+      if (this.currentQuestion === 6) {
+        VueCookies.set("currentQuestionSave", "6")
+      }
+      if (this.currentQuestion === 7) {
+        VueCookies.set("currentQuestionSave", "7")
+      }
+      if (this.currentQuestion === 8) {
+        VueCookies.set("currentQuestionSave", "8")
+      }
+      if (this.currentQuestion === 9) {
+        VueCookies.set("currentQuestionSave", "9")
+      }
+      if (this.currentQuestion === 10) {
+        VueCookies.set("currentQuestionSave", "10")
+      }
+      if (this.currentQuestion === 11) {
+        VueCookies.set("currentQuestionSave", "11")
+      }
+      if (this.currentQuestion === 12) {
+        VueCookies.set("currentQuestionSave", "12")
+      }
+      if (this.currentQuestion === 13) {
+        VueCookies.set("currentQuestionSave", "13")
+      }
+      if (this.currentQuestion === 14) {
+        VueCookies.set("currentQuestionSave", "14")
+      }
+      if (this.currentQuestion === 15) {
+        VueCookies.set("currentQuestionSave", "15")
+      }
+      if (this.currentQuestion === 16) {
+        VueCookies.set("currentQuestionSave", "16")
+      }
+      if (this.currentQuestion === 17) {
+        VueCookies.set("currentQuestionSave", "17")
+      }
+      if (this.currentQuestion === 18) {
+        VueCookies.set("currentQuestionSave", "18")
+      }
+      if (this.currentQuestion === 19) {
+        VueCookies.set("currentQuestionSave", "19")
+      }
+      if (this.currentQuestion === 20) {
+        VueCookies.set("currentQuestionSave", "20")
+      }
+      if (this.currentQuestion === 21) {
+        VueCookies.set("currentQuestionSave", "21")
+      }
+      if (this.currentQuestion === 22) {
+        VueCookies.set("currentQuestionSave", "22")
+      }
+      if (this.currentQuestion === 23) {
+        VueCookies.set("currentQuestionSave", "23")
+      }
+      if (this.currentQuestion === 24) {
+        VueCookies.set("currentQuestionSave", "24")
+      }
+      if (this.loadButton === true) {
+        this.currentQuestion === VueCookies.get("currentQuestionSave")
+        this.loadButton === false;
+      }
     }
   },
 };
