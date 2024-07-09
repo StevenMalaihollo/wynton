@@ -1,10 +1,17 @@
+<script setup>
+import { ref } from "vue";
+const questionAnswer1 = ref(1);
+</script>
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div v-if="currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
       <br>
-      <input v-model="questionAnswer1" />
+      <input v-model="questionAnswer1" type="number" min="1" max="5" class="sliderInputBox" />
+      <br>
+      <input v-model="questionAnswer1" type="range" min="1" max="5" class="slider" />
+      <br>
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
@@ -19,6 +26,8 @@
     <div v-else-if="currentQuestion === 3">
       <p>Vraag 3: Hoe heet dit karakter?</p>
       <img alt="A Hiragana" src="@/assets/A-Hiragana.png" />
+      <br>
+      <a href="https://nl.wikipedia.org/wiki/Hiragana#Hepburn-romanisatie_van_het_hiragana-schrift">Hint</a>
       <br>
       <input v-model="questionAnswer3" />
       <br>
@@ -132,7 +141,7 @@ export default {
         }
       }
       if (this.currentQuestion === 4) {
-        if (this.questionAnswer4 === "") {
+        if (this.questionAnswer4 === "vraag 4") {
           this.playApplause();
           this.saveButton++;
           this.currentQuestion++; 
@@ -219,8 +228,8 @@ export default {
         VueCookies.set("currentQuestionSave", "24")
       }
       if (this.loadButton === true) {
-        this.currentQuestion === VueCookies.get("currentQuestionSave")
-        this.loadButton === false;
+        this.currentQuestion = VueCookies.get("currentQuestionSave")
+        this.loadButton = false;
       }
     }
   },
