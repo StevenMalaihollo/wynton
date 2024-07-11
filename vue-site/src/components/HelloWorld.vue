@@ -1,5 +1,7 @@
 <script setup>
+import { reactive } from 'vue';
 import { ref } from "vue";
+const loadSavebuttonReactive = reactive({ loadSaveButton: "" });
 const questionAnswer1 = ref(1);
 </script>
 <template>
@@ -46,7 +48,7 @@ const questionAnswer1 = ref(1);
     </div>
     <div v-if="loadSaveButton === true">
       <button @click="handleClick">Save</button>
-      <button @click="loadButton = true && handleClick">Load</button>
+      <button @click="loadSavebuttonReactive.loadSaveButton = true && handleClick">Load</button>
     </div>
   </div>
 </template>
