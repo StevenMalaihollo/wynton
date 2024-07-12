@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import { ref } from "vue";
 const loadSavebuttonReactive = reactive({ loadSaveButton: "" });
-const currentQuestionReactive = reactive({ currentQuestion: "1" });
+const currentQuestionReactive = reactive({ currentQuestion: 1 });
 const questionAnswer1 = ref(1);
 </script>
 <template>
