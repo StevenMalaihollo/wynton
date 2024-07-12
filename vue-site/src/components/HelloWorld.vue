@@ -2,12 +2,13 @@
 import { reactive } from 'vue';
 import { ref } from "vue";
 const loadSavebuttonReactive = reactive({ loadSaveButton: "" });
+const currentQuestionReactive = reactive({ currentQuestion: "1" });
 const questionAnswer1 = ref(1);
 </script>
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div v-if="currentQuestion === 1">
+    <div v-if="currentQuestionReactive.currentQuestion === 1">
       <p>Vraag 1: Hoeveel Japanse alfabetten zijn er?</p>
       <br>
       <input v-model="questionAnswer1" type="number" min="1" max="5" class="sliderInputBox" />
@@ -17,7 +18,7 @@ const questionAnswer1 = ref(1);
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
-    <div v-else-if="currentQuestion === 2">
+    <div v-else-if="currentQuestionReactive.currentQuestion === 2">
       <p>Vraag 2: Hoe heten de 3 Japanse alfabetten?</p>
       <a href = "https://nl.wikipedia.org/wiki/Japans_schrift">Hint</a>
       <br>
@@ -25,7 +26,7 @@ const questionAnswer1 = ref(1);
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
-    <div v-else-if="currentQuestion === 3">
+    <div v-else-if="currentQuestionReactive.currentQuestion === 3">
       <p>Vraag 3: Hoe heet dit karakter?</p>
       <img alt="A Hiragana" src="@/assets/A-Hiragana.png" />
       <br>
@@ -35,14 +36,14 @@ const questionAnswer1 = ref(1);
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
-    <div v-else-if="currentQuestion === 4">
+    <div v-else-if="currentQuestionReactive.currentQuestion === 4">
       <p>Vraag 4: </p>
       <br>
       <input v-model="questionAnswer4" />
       <br>
       <button @click="handleClick">Volgende</button>
     </div>
-    <div v-else-if="currentQuestion === 5">
+    <div v-else-if="currentQuestionReactive.currentQuestion === 5">
       <p>Gefeliciteerd je hebt de Quiz gehaald!</p>
       <img alt="Big trophy" src="@/assets/trophy.png" />
     </div>
@@ -66,6 +67,7 @@ export default {
   data: function () {
     return {
       currentQuestion: 1,
+      currentQuestionReactive: 1,
       loadButton: false,
       loadSaveButton: true,
       questionAnswer1: "",
@@ -102,7 +104,7 @@ export default {
   },
   methods: {
     handleClick() {
-      if (this.currentQuestion === 1) {
+      if (this.currentQuestionReactive === 1) {
         if (this.questionAnswer1 === "3") {
           this.playApplause();
           this.currentQuestion++; 
@@ -113,7 +115,7 @@ export default {
           return
         }
       }
-      if (this.currentQuestion === 2) {
+      if (this.currentQuestionReactive === 2) {
         if (this.questionAnswer2 === "Hiragana, Katakana, Kanji") {
           this.playApplause();
           this.currentQuestion++; 
@@ -131,7 +133,7 @@ export default {
           }
         }
       }
-      if (this.currentQuestion === 3) {
+      if (this.currentQuestionReactive === 3) {
         if (this.questionAnswer3 === "a") {
           this.playApplause();
           this.currentQuestion++; 
@@ -142,7 +144,7 @@ export default {
           return;
         }
       }
-      if (this.currentQuestion === 4) {
+      if (this.currentQuestionReactive === 4) {
         if (this.questionAnswer4 === "vraag 4") {
           this.playApplause();
           this.saveButton++;
@@ -154,83 +156,83 @@ export default {
           return;
         }
       }
-      if (this.currentQuestion === 5) {
+      if (this.currentQuestionReactive === 5) {
         this.loadSaveButton === false
       }
-      if (this.currentQuestion === 1) {
+      if (this.currentQuestionReactive === 1) {
         VueCookies.set("currentQuestionSave", "1")
       }
-      if (this.currentQuestion === 2) {
+      if (this.currentQuestionReactive === 2) {
         VueCookies.set("currentQuestionSave", "2")
       }
-      if (this.currentQuestion === 3) {
+      if (this.currentQuestionReactive === 3) {
         VueCookies.set("currentQuestionSave", "3")
       }
-      if (this.currentQuestion === 4) {
+      if (this.currentQuestionReactive === 4) {
         VueCookies.set("currentQuestionSave", "4")
       }
-      if (this.currentQuestion === 5) {
+      if (this.currentQuestionReactive === 5) {
         VueCookies.set("currentQuestionSave", "5")
       }
-      if (this.currentQuestion === 6) {
+      if (this.currentQuestionReactive === 6) {
         VueCookies.set("currentQuestionSave", "6")
       }
-      if (this.currentQuestion === 7) {
+      if (this.currentQuestionReactive === 7) {
         VueCookies.set("currentQuestionSave", "7")
       }
-      if (this.currentQuestion === 8) {
+      if (this.currentQuestionReactive === 8) {
         VueCookies.set("currentQuestionSave", "8")
       }
-      if (this.currentQuestion === 9) {
+      if (this.currentQuestionReactive === 9) {
         VueCookies.set("currentQuestionSave", "9")
       }
-      if (this.currentQuestion === 10) {
+      if (this.currentQuestionReactive === 10) {
         VueCookies.set("currentQuestionSave", "10")
       }
-      if (this.currentQuestion === 11) {
+      if (this.currentQuestionReactive === 11) {
         VueCookies.set("currentQuestionSave", "11")
       }
-      if (this.currentQuestion === 12) {
+      if (this.currentQuestionReactive === 12) {
         VueCookies.set("currentQuestionSave", "12")
       }
-      if (this.currentQuestion === 13) {
+      if (this.currentQuestionReactive === 13) {
         VueCookies.set("currentQuestionSave", "13")
       }
-      if (this.currentQuestion === 14) {
+      if (this.currentQuestionReactive === 14) {
         VueCookies.set("currentQuestionSave", "14")
       }
-      if (this.currentQuestion === 15) {
+      if (this.currentQuestionReactive === 15) {
         VueCookies.set("currentQuestionSave", "15")
       }
-      if (this.currentQuestion === 16) {
+      if (this.currentQuestionReactive === 16) {
         VueCookies.set("currentQuestionSave", "16")
       }
-      if (this.currentQuestion === 17) {
+      if (this.currentQuestionReactive === 17) {
         VueCookies.set("currentQuestionSave", "17")
       }
-      if (this.currentQuestion === 18) {
+      if (this.currentQuestionReactive === 18) {
         VueCookies.set("currentQuestionSave", "18")
       }
-      if (this.currentQuestion === 19) {
+      if (this.currentQuestionReactive === 19) {
         VueCookies.set("currentQuestionSave", "19")
       }
-      if (this.currentQuestion === 20) {
+      if (this.currentQuestionReactive === 20) {
         VueCookies.set("currentQuestionSave", "20")
       }
-      if (this.currentQuestion === 21) {
+      if (this.currentQuestionReactive === 21) {
         VueCookies.set("currentQuestionSave", "21")
       }
-      if (this.currentQuestion === 22) {
+      if (this.currentQuestionReactive === 22) {
         VueCookies.set("currentQuestionSave", "22")
       }
-      if (this.currentQuestion === 23) {
+      if (this.currentQuestionReactive === 23) {
         VueCookies.set("currentQuestionSave", "23")
       }
-      if (this.currentQuestion === 24) {
+      if (this.currentQuestionReactive === 24) {
         VueCookies.set("currentQuestionSave", "24")
       }
       if (this.loadButton === true) {
-        this.currentQuestion = VueCookies.get("currentQuestionSave")
+        this.currentQuestionReactive.currentQuestion = VueCookies.get("currentQuestionSave")
         this.loadButton = false;
       }
     }
